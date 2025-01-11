@@ -1,0 +1,18 @@
+{% load static %}
+{% block content %}
+<section class="tags">
+    {% for tag in tags %}
+    <a href="/home/{{tag.name}}">{{tag.name}}</a>
+    {% endfor %}
+</section>
+<main class="allphotos">
+    {% for pic in photos %}
+    <div class="photo">
+        <img src="{{ pic.photo.url }}" alt="" class="photoimg">
+        <p class="photodescription">{{ pic.description }}</p>
+        <a href="/like/{{ pic.id }}" class="likes">👍{{ pic.likes_count }}</a>
+        <a href="/dislike/{{ pic.id }}" class="dislikes">👎{{ pic.dislikes_count }}</a>
+    </div>
+    {% endfor %}
+</main>
+{% endblock %}

@@ -1,0 +1,183 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/register' %}">
+    <title>{% block title %}Register{% endblock %}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1E1E2F;
+            color: #FFFFFF;
+            padding: 20px;
+        }
+
+        nav {
+            background-color: #2A2A3B;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        nav ul li a {
+            color: #BB86FC;
+            text-decoration: none;
+            font-size: 1.2em;
+        }
+
+        nav ul li a:hover {
+            color: #FFFFFF;
+        }
+
+        .messages {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .messages li {
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .messages .success {
+            background-color: #4CAF50;
+        }
+
+        .messages .error {
+            background-color: #F44336;
+        }
+
+        .logged-in {
+            background-color: #4CAF50;
+            color: #FFFFFF;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .register {
+            display: flex;
+            flex-direction: column;
+            background-color: #2A2A3B;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 400px;
+            margin: auto;
+        }
+
+        .register label {
+            margin-top: 10px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .register input[type="text"],
+        .register input[type="password"],
+        .register input[type="email"] {
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            background-color: #1E1E2F;
+            color: #FFFFFF;
+        }
+
+        .register input[type="submit"] {
+            background-color: #BB86FC;
+            color: #1E1E2F;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .register input[type="submit"]:hover {
+            background-color: #FFFFFF;
+            color: #1E1E2F;
+        }
+
+        .register ul {
+            display: none;
+            list-style: none;
+            padding: 0;
+        }
+
+        .register ul li {
+            display: none;
+        }
+
+        .register p:nth-child(2),
+        .register p:nth-child(8),
+        .helptext {
+            font-size: 0.9em;
+            color: #BB86FC;
+            display: none;
+            margin-top: -10px;
+            margin-bottom: 10px;
+        }
+
+        .register input[type="text"]::placeholder,
+        .register input[type="password"]::placeholder {
+            color: #BB86FC;
+            opacity: 0.7;
+        }
+
+        .register input[type="text"]:invalid,
+        .register input[type="password"]:invalid {
+            border-color: #F44336;
+        }
+
+        .register span {
+            font-size: 0.9em;
+            color: #BB86FC;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .register span a {
+            color: #BB86FC;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .register span a:hover {
+            color: #FFFFFF;
+        }
+    </style>
+</head>
+
+<body>
+    {% if user.is_authenticated %}
+    <p class="logged-in">You are already logged in! Check out your <a href="/profile">profile!</a></p>
+    {% else %}
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <form action="" class="register" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Register">
+        <span>Already have an account <a href="/">Login</a></span>
+    </form>
+    {% endif %}
+</body>
+
+</html>

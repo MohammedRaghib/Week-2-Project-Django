@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Profile{% endblock %}
+{% load static%} 
+{% block content %}
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <section class="form">
+        <aside class="Back">
+            <a href="/profile">◀</a>
+        </aside>
+        <form action="" method="post" class="Editing_Form">
+            {% csrf_token %}
+            <input type="file" name="profpic" id="pic" accept="image/*"/>
+            <label for="">Profile Pic</label>
+            <label for="">Username:</label>
+            <input type="text" name="username" placeholder="Enter new username" required />
+            <label for="">First Name:</label>
+            <input type="text" name="first_name" placeholder="Enter new first name" required />
+            <label for="">Last Name:</label>
+            <input type="text" name="last_name" placeholder="Enter new last name" required />
+            <label for="">Email:</label>
+            <input type="text" name="email" placeholder="Enter new email" required />
+            <input type="submit" value="Submit" name="SubmitForm" class="submitform" />
+        </form>
+    </section>
+{% endblock %}

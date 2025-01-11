@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title %}Profile{% endblock %}
+{% load static%} 
+{% block content %}
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <section>
+        <aside class="Open">
+            <a href="/editprof">🖊</a>
+        </aside>
+        <main class="Profile">
+            {% if prof.image %}
+            <img src="{{ prof.image.url }}" alt=""/>
+            {% else %}
+            <img src="{% static 'images/balloons.jpg' %}" alt="" class="default">
+            {% endif %}
+            <label for="" class="username">Username:</label>
+            <span>{{ user.username }}</span>
+            <label for="" class="first_name">First Name:</label>
+            <span>{{ user.first_name }}</span>
+            <label for="" class="last_name">Last Name:</label>
+            <span>{{ user.last_name }}</span>
+            <label for="" class="email">Last Name:</label>
+            <span>{{ user.email }}</span>
+        </main>
+    </section>
+{% endblock %}
