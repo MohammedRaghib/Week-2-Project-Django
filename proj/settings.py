@@ -14,15 +14,17 @@ import os
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
+import dj_database_url
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 cloudinary.config( 
-    cloud_name = "djenpeqlo", 
-    api_key = "745276244642529", 
-    api_secret = "4VMQwk4MSDDQyv1_7RtUy396TfA", 
+    cloud_name = config('cloud_name'), 
+    api_key = config('api_key'), 
+    api_secret = config('api_secret'), 
     secure=True
 )
 
@@ -30,7 +32,7 @@ cloudinary.config(
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-@#3vg(r5m76t7az^s&fxgmw+l*qt^yis)twaq9pui+bd#^5-pv'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -93,14 +95,15 @@ WSGI_APPLICATION = 'proj.wsgi.application'
 # }
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql', # Cam
-        'NAME': 'photodb', # Camera!4Snap
-        'USER': 'camera',
-        'PASSWORD': '12345',
-        'HOST': 'localhost',
-        'PORT': ''
-    }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql', # Cam
+    #     'NAME': 'photodb', # Camera!4Snap
+    #     'USER': 'camera',
+    #     'PASSWORD': '12345',
+    #     'HOST': 'localhost',
+    #     'PORT': ''
+    # }
+    'default': dj_database_url.parse(config('DATABASE_URL'))
 }
 
 

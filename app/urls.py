@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path
 from . import views
-
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 urlpatterns = [
     path('', views.login_view, name='login'),
     path('register/', views.register_view, name='register'),
@@ -13,3 +13,5 @@ urlpatterns = [
     path('profile/', views.profile, name='profile'),
     path('editprof/', views.editprof, name='editprof'),
 ]
+
+urlpatterns += staticfiles_urlpatterns()
