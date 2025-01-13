@@ -1,0 +1,15 @@
+asgiref==3.8.1
+certifi==2024.12.14
+cloudinary==1.41.0
+dj-database-url==2.3.0
+Django==5.1.4
+gunicorn==23.0.0
+packaging==24.2
+psycopg==3.2.3
+psycopg-binary==3.2.3
+python-decouple==3.8
+six==1.17.0
+sqlparse==0.5.3
+typing_extensions==4.12.2
+tzdata==2024.2
+urllib3==2.3.0
