@@ -35,7 +35,7 @@ cloudinary.config(
 SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -95,15 +95,15 @@ WSGI_APPLICATION = 'proj.wsgi.application'
 # }
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql', # Cam
-        'NAME': 'photodb', # Camera!4Snap
-        'USER': 'camera',
-        'PASSWORD': '12345',
-        'HOST': 'localhost',
-        'PORT': ''
-    }
-    # 'default': dj_database_url.parse(config('DATABASE_URL'))
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql', # Cam
+    #     'NAME': 'photodb', # Camera!4Snap
+    #     'USER': 'camera',
+    #     'PASSWORD': '12345',
+    #     'HOST': 'localhost',
+    #     'PORT': ''
+    # }
+    'default': dj_database_url.parse(config('DATABASE_URL'))
 }
 
 
