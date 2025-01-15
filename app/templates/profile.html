@@ -14,8 +14,8 @@
             <a href="/editprof">🖊</a>
         </aside>
         <main class="Profile">
-            {% if prof.image %}
-            <img src="{{ prof.image.url }}" alt=""/>
+            {% if prof.photo %}
+            <img src="{{ prof.photo.url }}" alt=""/>
             {% else %}
             <img src="{% static 'images/balloons.jpg' %}" alt="" class="default">
             {% endif %}

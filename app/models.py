@@ -6,7 +6,7 @@ from django.db.models.signals import post_save
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    image = CloudinaryField('image', null= True, blank=True)
+    photo = CloudinaryField('image', null= True, blank=True)
     def __str__(self):
         return f"{self.user.username} Profile"
 

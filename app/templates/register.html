@@ -94,7 +94,7 @@
             color: #FFFFFF;
         }
 
-        .register input[type="submit"] {
+        .subform {
             background-color: #BB86FC;
             color: #1E1E2F;
             border: none;
@@ -104,7 +104,7 @@
             transition: background-color 0.3s;
         }
 
-        .register input[type="submit"]:hover {
+        .subform:hover {
             background-color: #FFFFFF;
             color: #1E1E2F;
         }
@@ -119,25 +119,10 @@
             display: none;
         }
 
-        .register p:nth-child(2),
-        .register p:nth-child(8),
-        .helptext {
-            font-size: 0.9em;
-            color: #BB86FC;
-            display: none;
-            margin-top: -10px;
-            margin-bottom: 10px;
-        }
-
         .register input[type="text"]::placeholder,
         .register input[type="password"]::placeholder {
             color: #BB86FC;
             opacity: 0.7;
-        }
-
-        .register input[type="text"]:invalid,
-        .register input[type="password"]:invalid {
-            border-color: #F44336;
         }
 
         .register span {
@@ -173,8 +158,35 @@
 
     <form action="" class="register" method="post">
         {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Register">
+        <label for="id_username">Username:</label>
+        <input type="text" name="username" maxlength="150" autofocus="" required
+            aria-describedby="id_username_helptext" id="id_username">
+        </p>
+        <p>
+            <label for="id_first_name">First name:</label>
+            <input type="text" name="first_name" maxlength="150" id="id_first_name" required>
+        </p>
+        <p>
+            <label for="id_last_name">Last name:</label>
+            <input type="text" name="last_name" maxlength="150" id="id_last_name" required>
+        </p>
+        <p>
+            <label for="id_email">Email address:</label>
+            <input type="email" name="email" maxlength="254" id="id_email" required>
+        </p>
+        <p>
+            <label for="id_password1">Password:</label>
+            <input type="password" name="password1" autocomplete="new-password" aria-describedby="id_password1_helptext"
+                id="id_password1" required>
+        </p>
+        <p>
+            <label for="id_password2">Password confirmation:</label>
+            <input type="password" name="password2" autocomplete="new-password" aria-describedby="id_password2_helptext"
+                id="id_password2" required>
+            <!-- <span class="helptext" id="id_password2_helptext">Enter the same password as before, for
+                verification.</span> -->
+        </p>
+        <button type="submit" class="subform">Register</button>
         <span>Already have an account <a href="/">Login</a></span>
     </form>
     {% endif %}
