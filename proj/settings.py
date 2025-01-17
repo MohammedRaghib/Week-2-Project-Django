@@ -52,7 +52,7 @@ INSTALLED_APPS = [
     'app',
     'cloudinary',
 ]
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -90,19 +90,19 @@ WSGI_APPLICATION = 'proj.wsgi.application'
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3', # test_user
-#         'NAME': BASE_DIR / 'db.sqlite3', # 123456
+#         'NAME': BASE_DIR / 'pic.db', # 123456
 #     }
 # }
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql', # Cam
-    #     'NAME': 'photodb', # Camera!4Snap
-    #     'USER': 'camera',
-    #     'PASSWORD': '12345',
-    #     'HOST': 'localhost',
-    #     'PORT': ''
-    # }
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql', # Cam
+#         'NAME': 'photodb', # Camera!4Snap
+#         'USER': 'camera',
+#         'PASSWORD': '12345',
+#         'HOST': 'localhost',
+#         'PORT': ''
+#     }
     'default': dj_database_url.parse(config('DATABASE_URL'))
 }
 
