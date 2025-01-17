@@ -87,14 +87,14 @@ WSGI_APPLICATION = 'proj.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3', # test_user
-#         'NAME': BASE_DIR / 'pic.db', # 123456
-#     }
-# }
-
 DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3', # test_user
+        'NAME': BASE_DIR / 'pic.db', # 123456
+    }
+}
+
+# DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql', # Cam
 #         'NAME': 'photodb', # Camera!4Snap
@@ -104,8 +104,8 @@ DATABASES = {
 #         'PORT': ''
 #     },
     # 'default': dj_database_url.parse(config('DATABASE_URL')),
-    'default': dj_database_url.parse('postgresql://database_fhzz_user:AgVQ5qq9hv7QrqEYjDArhRC3B2r1ogl8@dpg-cu51sq56l47c73dg2k8g-a/database_fhzz')
-}
+    # 'default': dj_database_url.parse('postgresql://database_fhzz_user:AgVQ5qq9hv7QrqEYjDArhRC3B2r1ogl8@dpg-cu51sq56l47c73dg2k8g-a/database_fhzz')
+# }
 
 
 # Password validation
