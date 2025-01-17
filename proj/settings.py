@@ -102,8 +102,9 @@ DATABASES = {
 #         'PASSWORD': '12345',
 #         'HOST': 'localhost',
 #         'PORT': ''
-#     }
-    'default': dj_database_url.parse(config('DATABASE_URL'))
+#     },
+    # 'default': dj_database_url.parse(config('DATABASE_URL')),
+    'default': dj_database_url.parse('postgresql://database_fhzz_user:AgVQ5qq9hv7QrqEYjDArhRC3B2r1ogl8@dpg-cu51sq56l47c73dg2k8g-a/database_fhzz')
 }
 
 
