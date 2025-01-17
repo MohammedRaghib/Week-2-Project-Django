@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <h1>Upload Photo</h1>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <form method="post" class="form">
+        {% csrf_token %}
+        <label for="photo">Select Photo:</label>
+        <input type="file" name="photo" id="photo">
+        <br><br>
+        <label for="description">Description:</label>
+        <textarea name="description" id="description" rows="4" cols="50"></textarea>
+        <br><br>
+        <label for="tags">Tags:</label>
+        <input type="text" name="tags" id="tags" placeholder="Enter tags separated by commas">
+        <br><br>
+        <button type="submit" class="submitform">Upload</button>
+    </form>
+</div>
+{% endblock %}

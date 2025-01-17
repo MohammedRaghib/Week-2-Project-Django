@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block title %}Profile{% endblock %}
-{% load static%} 
+{% load static %} 
 {% block content %}
     {% if messages %}
     <ul class="messages">
@@ -17,7 +17,7 @@
             {% if prof.photo %}
             <img src="{{ prof.photo.url }}" alt=""/>
             {% else %}
-            <img src="{% static 'images/balloons.jpg' %}" alt="" class="default">
+            <img src="" alt="" class="default">
             {% endif %}
             <label for="" class="username">Username:</label>
             <span>{{ user.username }}</span>

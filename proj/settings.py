@@ -22,9 +22,9 @@ from decouple import config
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 cloudinary.config( 
-    cloud_name = config('cloud_name'), 
-    api_key = config('api_key'), 
-    api_secret = config('api_secret'), 
+    cloud_name = "djenpeqlo",
+    api_key = "745276244642529",
+    api_secret = "4VMQwk4MSDDQyv1_7RtUy396TfA",
     secure=True
 )
 
@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app',
     'cloudinary',
+    'crispy_forms',
 ]
 # DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 MIDDLEWARE = [
@@ -141,10 +142,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
+    BASE_DIR / 'static',  # For development
 ]
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

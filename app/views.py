@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import UserRegistration
+from .forms import UserRegistration, PhotoForm
 from .models import Photo, Profile, Tag
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -75,6 +75,34 @@ def home(request, tagname=None):
         photos = Photo.objects.all()
     return render(request, "base.html", {"photos": photos, "tags": tags})
 
+@login_required 
+def upload_photo(request):
+    photos = Photo.objects.all() 
+
+    if request.method == 'POST':
+        try:
+            photo = request.POST['photo']
+            description = request.POST['description']
+            tag_names = request.POST.get('tags', '').strip() 
+            tags = []
+
+            if tag_names:
+                for tag_name in tag_names.split(','):
+                    tag_name = tag_name.strip()
+                    tag, created = Tag.objects.get_or_create(name=tag_name)
+                    tags.append(tag)
+
+            new_photo = Photo.objects.create(
+                photo=photo,
+                description=description,
+            )
+            new_photo.tags.set(tags) 
+            messages.success(request, 'Photo uploaded successfully!') 
+            return redirect('home_tagless') 
+        except Exception as e:
+            messages.error(request, f'Error uploading photo: {e}') 
+
+    return render(request, 'upload_photo.html', {'photos': photos}) 
 
 def logout_view(request):
     logout(request)

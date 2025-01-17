@@ -29,8 +29,8 @@ class Photo(models.Model):
     description = models.TextField()
     photo = CloudinaryField('image', null=True, blank=True)
     tags = models.ManyToManyField(Tag, related_name='tags')
-    likes = models.ManyToManyField(User, related_name='likes')
-    dislikes = models.ManyToManyField(User, related_name='dislikes')
+    likes = models.ManyToManyField(User, related_name='likes', blank=True)
+    dislikes = models.ManyToManyField(User, related_name='dislikes', blank=True)
 
     def __str__(self):
         return f"A photo of {self.description}"
